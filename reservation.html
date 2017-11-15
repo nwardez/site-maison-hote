@@ -44,12 +44,12 @@
             <div class="row">
               <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
-                <input id="name" type="text" class="validate">
+                <input id="name" type="text" class="validate" required>
                 <label for="name">Nom</label>
               </div>
               <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
-                <input id="subname" type="tel" class="validate">
+                <input id="subname" type="tel" class="validate" required>
                 <label for="subname">Prénom</label>
               </div>
             </div>
@@ -116,12 +116,12 @@
          <div class="row">
             <form  action="#">
               <p>Indiquez votre date d'arrivée</p>
-              <input type="text" class="datepicker">
+              <input id='arrive' type="text" class="datepicker">
             </form>
 
             <form  action="#">
               <p>Indiquez votre date de départ</p>
-              <input type="text" class="datepicker">
+              <input id='depart'type="text" class="datepicker">
             </form>
           </div>
 
@@ -143,7 +143,7 @@
             <p>Préférences (dans la mesure de nos possibilités)</p>
             <p>
               <input type="checkbox" id="park"/>
-              <label for="park">Parking (25.00 € par jour)</label>
+              <label for="park">Parking (50.00 € par jour)</label>
             </p>
             <p>
               <input type="checkbox" id="ani"/>
@@ -163,7 +163,7 @@
           <i class="material-icons right">send</i>
         </button>
 
-        <label id="resultat">test</label>
+        <div id="resultat">test</div>
 
   
 
@@ -221,13 +221,38 @@
       <script src="monsite.js"></script>
 
       <script>
+          var element = document.getElementById('valid');
+          element.addEventListener('click', affiche);
+           
+          
+       
         function affiche () {
-        alert("Vous m'avez changé !");
-      }
-      var element = document.getElementById('valid');
-      element.addEventListener('click', affiche);
+          
+          var montantDevis = 0;
+          var montantPersonnes = 0;
+          var montantParking = 0;
+          var montantAnimal = 0;
+          var nombreDeNuits = 0;
+          var Date1 = new Date(document.getElementById('arrive').value);
+          var Date2 = new Date(document.getElementById('depart').value);
+          nombreDeNuits = Math.abs(Math.ceil((Date2.getTime() - Date1.getTime())/(1000*60*60*24)));
 
-      
+          var O_Select = document.getElementById('personnes'); 
+          var index = O_Select.selectedIndex; 
+          
+          montantPersonnes = O_Select.options[index].value * 85; 
+
+        
+        if (document.getElementById('park').checked) {
+          montantParking=50;
+        }
+        if (document.getElementById('ani').checked) {
+          montantAnimal=35;
+        }
+        montantDevis=nombreDeNuits*(montantPersonnes+montantParking+montantAnimal);
+        var divDevis = document.getElementById('resultat');
+        divDevis.innerHTML=montantDevis;
+      }
       </script> 
        
 
