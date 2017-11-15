@@ -3,6 +3,12 @@
   background-color: #4e5945;
 }
 
+#titre_resa {
+	color: #4e5945;
+	border-bottom-style: solid;
+	margin-bottom: 50px;
+}
+
 .topnav a {
   float: left;
   display: block;
@@ -43,13 +49,9 @@
 	height:100%;
 	}
 
-.titre_devis {
-	text-align: center;
-}
 
-.centre {
-	text-align: center !important;
-}
+
+
 
 
 .card-content.white-text {
@@ -58,13 +60,9 @@
 }
 
 
-.retrait {
-	padding: 30px;
-}
 
-.btn {
-	padding-bottom: 20px;
-}
+
+
 
 .page-footer {
 	margin-top: 20px;
@@ -78,9 +76,7 @@
 .conteneur {
 	margin:0 auto;
 }
-.left {
-	float: left;
-}
+
 
 .nav-wrapper {
 	background-color: #4e5945;
